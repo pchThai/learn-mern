@@ -1,0 +1,15 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "twitter",
+  "main": "server.js",
+  "scripts":{
+    "startDev": "nodemon server.js"
+  },
+  "author": "pchThai",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}
