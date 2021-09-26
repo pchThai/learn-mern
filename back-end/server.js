@@ -1,17 +1,24 @@
+require('dotenv').config();
+const {connectDB} = require('./configs/db');
+connectDB();
 const express = require('express');
+const cors = require('cors');
+//Import Routers
+
+const authRoute = require('./routers/authRoute');
+const postRoute = require('./routers/postsRoute');
+
 const app = express();
-app.get('/',(req,res,next)=>{
-    res.status(200).json({
-        status: 'success',
-        data:{
-            posts:[{
-                content: 'Hello world',
-                date: '19/09/2021'
-            }]
-        }
-    })
-})
-const port = 5000;
+
+
+
+app.use(cors());
+app.use(express.json());
+//Mount the route
+app.use('/api/v1/auth',authRoute);
+app.use('/api/v1/posts',postRoute);
+
+const port = process.env.APP_PORT;
 app.listen(port,()=> {
-    console.log(`Server is running on $(port)`);   
+    console.log('Server is running on ${port}');   
 })
